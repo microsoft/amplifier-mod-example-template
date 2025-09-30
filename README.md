@@ -1,14 +1,44 @@
-# Project
+# amplifier-mod-example-template
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+This repository is a **living template** for building Amplifier modules. It demonstrates how to:
 
-As the maintainer of this project, please make a few updates:
+- Ship a tool and/or model provider that registers with the Amplifier kernel
+- Structure a module as an isolated "brick" with tests and docs
+- Load the module via manifest entries using either a local path or git reference
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+The template is intentionally simple so it can be cloned and customized. Replace the example tool
+with your own logic, update the manifest snippet, and you're ready to go.
+
+## Getting Started
+
+```bash
+uv pip install -e .[dev]
+uv run pytest
+```
+
+## Manifest Snippet
+
+```toml
+[[modules]]
+name = "example-template"
+entrypoint = "amplifier_mod_example_template:register"
+path = "../amplifier-mod-example-template/src"
+config = { message = "Hello from template" }
+```
+
+If you publish the module to a git repo, you can swap `path` for `git = "https://..."` and optionally
+add `ref = "v1.0.0"`.
+
+## Customization Checklist
+
+1. Rename the module directory and update `entrypoint`
+2. Adjust `register()` to expose your tools/providers
+3. Add targeted tests under `tests/`
+4. Update this README with usage notes specific to your module
+5. Tag a release or provide clear instructions for referencing via manifest
+
+By keeping this template in sync with the core repo we ensure new modules share a consistent shape
+and remain easy for humans and AI tools to understand.
 
 ## Contributing
 
@@ -31,3 +61,4 @@ trademarks or logos is subject to and must follow
 [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general).
 Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
 Any use of third-party trademarks or logos are subject to those third-party's policies.
+
