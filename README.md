@@ -22,12 +22,13 @@ uv run pytest
 [[modules]]
 name = "example-template"
 entrypoint = "amplifier_mod_example_template:register"
-path = "../amplifier-mod-example-template/src"
+git = "https://github.com/microsoft/amplifier-mod-example-template.git"
+ref = "main"
 config = { message = "Hello from template" }
 ```
 
-If you publish the module to a git repo, you can swap `path` for `git = "https://..."` and optionally
-add `ref = "v1.0.0"`.
+For local development you can replace `git`/`ref` with
+`path = "../amplifier-mod-example-template/src"` (or wherever the repo lives on disk).
 
 ## Customization Checklist
 
@@ -61,4 +62,3 @@ trademarks or logos is subject to and must follow
 [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general).
 Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
 Any use of third-party trademarks or logos are subject to those third-party's policies.
-
